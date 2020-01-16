@@ -1,11 +1,9 @@
 package com.k02.entity;
 
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import java.util.Set;
 import javax.persistence.*;
 
-@EntityScan
+@Entity
 @Table(name = "user")
 public class User {
     @Id
@@ -13,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String username;
 
     private String password;
