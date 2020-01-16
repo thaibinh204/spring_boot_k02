@@ -1,4 +1,4 @@
-package com.mkyong.entity;
+package com.k02.entity;
 
 import javax.persistence.*;
 import java.util.Set;
