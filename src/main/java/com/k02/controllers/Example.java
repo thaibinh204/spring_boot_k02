@@ -30,9 +30,9 @@ public class Example {
 	@ResponseBody
 	public String lophoc() {
 		Lophoc lophoc = new Lophoc();
-		lophoc.setMaLopHoc("l1");
+		lophoc.setMaLopHoc("m01");
 		lophoc.setTenLopHoc("lop1");
-		lophoc.setTongSoSinhVien(2);
+		lophoc.setTongSoSinhVien(30);
 		lophocSrv.save(lophoc);
 		return  " nhap thong tin thanh cong";	
 	}
