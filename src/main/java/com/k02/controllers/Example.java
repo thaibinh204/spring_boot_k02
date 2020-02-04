@@ -28,12 +28,6 @@ public class Example {
 		return "Hello Spring Boot";
 	}
 	
-
-	@RequestMapping("/monhoc")
-	@ResponseBody
-	public String monhoc() {
-		return "Them mon hoc thanh cong";
-	}
 	
 	@RequestMapping("/monhoc")
 	@ResponseBody
