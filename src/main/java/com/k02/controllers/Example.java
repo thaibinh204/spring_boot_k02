@@ -22,4 +22,10 @@ public class Example {
 		userSrv.save(user);
 		return "Hello Spring Boot";
 	}
+	
+	@RequestMapping("/monhoc")
+	@ResponseBody
+	public String monhoc() {
+		return "Them mon hoc thanh cong";
+	}
 }
