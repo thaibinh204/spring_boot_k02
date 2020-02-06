@@ -29,7 +29,7 @@ public class Lophoc {
 	@Column(name = "tong_so_sinh_vien")
 	private Integer tongSoSinhVien;
 
-	@OneToMany(mappedBy = "lopHoc", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "lophoc", cascade = CascadeType.ALL)
 	private Set<SinhVien> dsSV = new HashSet<SinhVien>();
 
 	public Long getId() {

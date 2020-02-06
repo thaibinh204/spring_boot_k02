@@ -28,18 +28,15 @@ public class SinhVien {
 	@Column(name = "ngay_sinh")
 	private Date ngaySinh;
 
-	@Column(name = "ma_lop_hoc")
-	private String maLopHoc;
-
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Lophoc lopHoc;
+	private Lophoc lophoc;
 
 	public Lophoc getLophoc() {
-		return lopHoc;
+		return lophoc;
 	}
 
-	public void setLophoc(Lophoc lopHoc) {
-		this.lopHoc = lopHoc;
+	public void setLophoc(Lophoc lophoc) {
+		this.lophoc = lophoc;
 	}
 
 	public Long getId() {
@@ -72,14 +69,6 @@ public class SinhVien {
 
 	public void setNgaySinh(Date ngaySinh) {
 		this.ngaySinh = ngaySinh;
-	}
-
-	public String getMaLopHoc() {
-		return maLopHoc;
-	}
-
-	public void setMaLopHoc(String maLopHoc) {
-		this.maLopHoc = maLopHoc;
 	}
 
 }
