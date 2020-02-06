@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.k02.entity.Bangdiem;
 import com.k02.entity.Monhoc;
 import com.k02.entity.User;
+import com.k02.service.BangdiemService;
 import com.k02.service.MonhocService;
 import com.k02.service.UserService;
 
@@ -17,6 +19,9 @@ public class Example {
 	
 	@Autowired
 	private MonhocService monhocSrv;
+	
+	@Autowired
+	private BangdiemService bangdiemSrv;
 	
 	@RequestMapping("/hello")
 	@ResponseBody
@@ -37,5 +42,13 @@ public class Example {
 		mh.setTenmonhoc("Toan");
 		monhocSrv.save(mh);
 		return "Them bang mon hoc thanh cong";
+	}
+	
+	@RequestMapping("/bangdiem")
+	@ResponseBody
+	public String bangDiem() {
+		Bangdiem bangdiem = new Bangdiem();
+		System.out.println(bangdiemSrv.getOne(1l));  
+		return "Danh sach bang diem";
 	}
 }
