@@ -1,10 +1,15 @@
 package com.k02.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,9 @@ public class Lophoc {
 
 	@Column(name = "tong_so_sinh_vien")
 	private Integer tongSoSinhVien;
+
+	@OneToMany(mappedBy = "lopHoc", cascade = CascadeType.ALL)
+	private Set<SinhVien> dsSV = new HashSet<SinhVien>();
 
 	public Long getId() {
 		return id;
@@ -54,6 +62,14 @@ public class Lophoc {
 
 	public void setTongSoSinhVien(Integer tongSoSinhVien) {
 		this.tongSoSinhVien = tongSoSinhVien;
+	}
+
+	public Set<SinhVien> getDsSV() {
+		return dsSV;
+	}
+
+	public void setDsSV(Set<SinhVien> dsSV) {
+		this.dsSV = dsSV;
 	}
 
 }
