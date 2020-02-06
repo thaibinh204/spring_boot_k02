@@ -18,7 +18,6 @@ public class MonhocServiceImpl implements MonhocService {
 	
 	 @Override
     public void save(Monhoc mh) {
-		
 		 monhocRepository.save(mh);
     } 
 
