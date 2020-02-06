@@ -40,7 +40,7 @@ public class Example {
 	@ResponseBody
 	public String lophoc() {
 		Lophoc lophoc = new Lophoc();
-		lophoc.setMaLopHoc("m01");
+		lophoc.setMaLopHoc("m02");
 		lophoc.setTenLopHoc("lop1");
 		lophoc.setTongSoSinhVien(30);
 		lophocSrv.save(lophoc);
