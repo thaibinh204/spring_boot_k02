@@ -18,29 +18,30 @@ public class SinhVien {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "ma_sinh_vien")
 	private String maSinhVien;
-	
+
 	@Column(name = "ten_sinh_vien")
 	private String tenSinhVien;
-	
+
 	@Column(name = "ngay_sinh")
 	private Date ngaySinh;
-	
+
 	@Column(name = "ma_lop_hoc")
 	private String maLopHoc;
 
-	@ManyToOne (cascade=CascadeType.ALL)
-	  private Lophoc lopHoc;
-	public Lophoc getLophoc() {
-	    return lopHoc;
-	  }
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Lophoc lopHoc;
 
-	  public void setLophoc(Lophoc lopHoc) {
-	    this.lopHoc = lopHoc;
-	  }
-	  
+	public Lophoc getLophoc() {
+		return lopHoc;
+	}
+
+	public void setLophoc(Lophoc lopHoc) {
+		this.lopHoc = lopHoc;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -80,6 +81,5 @@ public class SinhVien {
 	public void setMaLopHoc(String maLopHoc) {
 		this.maLopHoc = maLopHoc;
 	}
-	
-	
+
 }

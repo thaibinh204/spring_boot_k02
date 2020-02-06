@@ -17,4 +17,11 @@ public class LophocServiceImpl implements LophocService {
 
 	}
 
+
+	@Override
+	public Lophoc findById(Long id) {
+		
+		return lophocRepository.getOne(id);
+	}
+
 }

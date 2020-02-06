@@ -39,12 +39,15 @@ public class Example {
 	@RequestMapping("/lophoc")
 	@ResponseBody
 	public String lophoc() {
-		Lophoc lophoc = new Lophoc();
-		lophoc.setMaLopHoc("m02");
-		lophoc.setTenLopHoc("lop1");
-		lophoc.setTongSoSinhVien(30);
-		lophocSrv.save(lophoc);
-		return  " nhap thong tin thanh cong";	
+//		Lophoc lophoc = new Lophoc();
+//		lophoc.setMaLopHoc("m02");
+//		lophoc.setTenLopHoc("lop1");
+//		lophoc.setTongSoSinhVien(30);
+//		lophocSrv.save(lophoc);
+		Lophoc lopHoc = lophocSrv.findById(1l);
+		System.out.println(lopHoc);
+		return  " nhap thong tin thanh cong";
+		
 	}
 
 	@RequestMapping("/monhoc")
@@ -55,6 +58,7 @@ public class Example {
 		mh.setTenmonhoc("Toan");
 		monhocSrv.save(mh);
 		return "Them bang mon hoc thanh cong";
+		
 	}
 
 }
