@@ -32,6 +32,7 @@ public class Example {
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String hello() {
+		//them file hello
 		User user = new User();
 		user.setUsername("thaibinh");
 		user.setPassword("123456");
