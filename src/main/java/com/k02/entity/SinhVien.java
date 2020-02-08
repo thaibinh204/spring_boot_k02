@@ -34,17 +34,6 @@ public class SinhVien {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Lophoc lophoc;
 	
-	@OneToMany(mappedBy = "sinhvien", cascade = CascadeType.ALL)
-	private Set<BangDiem> bdSV = new HashSet<BangDiem>();
-
-	public Set<BangDiem> getBdSV() {
-		return bdSV;
-	}
-
-	public void setBdSV(Set<BangDiem> bdSV) {
-		this.bdSV = bdSV;
-	}
-
 	public Lophoc getLophoc() {
 		return lophoc;
 	}

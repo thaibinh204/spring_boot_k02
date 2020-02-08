@@ -30,7 +30,8 @@ public class Example {
 	private UserService userSrv;
 	@Autowired
 	private LophocService lophocSrv;
-	
+	@Autowired
+	private BangDiemService bangdiemSrv;
 	@Autowired
 	private MonhocService monhocSrv;
 	
