@@ -82,12 +82,5 @@ public class Example {
 		
 	}
 	
-	@RequestMapping("/bangdiem")
-	@ResponseBody
-	public String bangDiem() {
-		Bangdiem bangdiem = new Bangdiem();
-		System.out.println(bangdiemSrv.getOne(1l));  
-		return "Danh sach bang diem";
-	}
 
 }
