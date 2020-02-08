@@ -42,13 +42,7 @@ public class Example {
 		userSrv.save(user);
 		return "Hello Spring Boot";
 	}
-	@RequestMapping("/bangdiem")
-	@ResponseBody
-	public String bangdiem() {
-		BangDiem bangDiem = bangdiemSrv.findById(1L);
-		return "bang diem cua hoc sinh";
-	}
-
+	
 	@RequestMapping("/lophoc")
 	@ResponseBody
 	public String lophoc() {
