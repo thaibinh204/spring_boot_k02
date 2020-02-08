@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.k02.entity.Lophoc;
 import com.k02.entity.User;
-import com.k02.service.BangDiemService;
 import com.k02.service.LophocService;
 
 
@@ -27,8 +26,6 @@ public class Example {
 	private UserService userSrv;
 	@Autowired
 	private LophocService lophocSrv;
-	@Autowired
-	private BangDiemService bangdiemSrv;
 	@Autowired
 	private MonhocService monhocSrv;
 	
