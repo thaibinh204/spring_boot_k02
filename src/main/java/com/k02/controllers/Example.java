@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import com.k02.entity.Bangdiem;
+
 
 
 import com.k02.entity.Lophoc;
@@ -19,7 +19,6 @@ import com.k02.service.LophocService;
 import com.k02.entity.Monhoc;
 import com.k02.entity.SinhVien;
 import com.k02.entity.User;
-import com.k02.service.BangdiemService;
 import com.k02.service.MonhocService;
 
 import com.k02.service.UserService;
@@ -31,12 +30,8 @@ public class Example {
 	@Autowired
 	private LophocService lophocSrv;
 	@Autowired
-	private BangDiemService bangdiemSrv;
-	@Autowired
 	private MonhocService monhocSrv;
 	
-	@Autowired
-	private BangdiemService bangdiemSrv;
 	
 	@RequestMapping("/hello")
 	@ResponseBody
