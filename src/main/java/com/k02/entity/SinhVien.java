@@ -1,6 +1,8 @@
 package com.k02.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,7 +33,7 @@ public class SinhVien {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Lophoc lophoc;
-
+	
 	public Lophoc getLophoc() {
 		return lophoc;
 	}

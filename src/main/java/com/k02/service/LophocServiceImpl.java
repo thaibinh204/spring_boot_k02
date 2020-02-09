@@ -10,7 +10,6 @@ public class LophocServiceImpl implements LophocService {
 	@Autowired
 	private LophocRepository lophocRepository;
 	
-
 	@Override
 	public void save(Lophoc lophoc) {
 		lophocRepository.save(lophoc);
