@@ -1,16 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta lang= "en" charset="UTF-8" />
+<meta charset="UTF-8" />
 <title>Person List</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 </head>
 <body>
-	<h1 align="center">Customer List</h1>
+	<h1 align="center">Detail Customer</h1>
 	<p align="center">
-		<a href="addCustomer"> Create New Product</a>
+		<a href="customerList">Customer List</a>
 	</p>
-	
 
 	<div>
 		<table align="center" border="1">
@@ -21,19 +20,14 @@
 				<th>City</th>
 				<th>Postalcode</th>
 				<th>Country</th>
-				<th>Actions</th>
 			</tr>
-			<tr th:each="customer : ${customers}">
+			<tr>
 				<td th:utext="${customer.customerName}">...</td>
 				<td th:utext="${customer.contactName}">...</td>
 				<td th:utext="${customer.address}">...</td>
 				<td th:utext="${customer.city}">...</td>
 				<td th:utext="${customer.postalCode}">...</td>
 				<td th:utext="${customer.country}">...</td>
-				<td><a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
-				</td>
 			</tr>
 		</table>
 	</div>
