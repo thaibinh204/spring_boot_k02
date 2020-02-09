@@ -1,9 +1,13 @@
 package com.k02.service;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.k02.entity.Customer;
 import com.k02.repository.CustomerRepository;
+
+@Service
 public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -12,6 +16,11 @@ public class CustomerServiceImpl implements CustomerService{
 	public void save(Customer customer) {
 		customerRepository.save(customer);
 		
+	}
+
+	@Override
+	public List<Customer> findAll() {		
+		return customerRepository.findAll();
 	}
 
 	

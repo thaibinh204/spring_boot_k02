@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1 align="center">Customer List</h1>
+	<p align="center">
+		<a href="addCustomer"> Create New Product</a>
+	</p>
+
+	<div>
+		<table align="center" border="1">
+			<tr>
+				<th>Customer name</th>
+				<th>Contact name</th>
+				<th>Address</th>
+				<th>City</th>
+				<th>Postalcode</th>
+				<th>Country</th>
+				<th>Actions</th>
+			</tr>
+			<tr th:each="customer : ${customers}">
+				<td th:utext="${customer.customerName}">...</td>
+				<td th:utext="${customer.contactName}">...</td>
+				<td th:utext="${customer.address}">...</td>
+				<td th:utext="${customer.city}">...</td>
+				<td th:utext="${customer.postalCode}">...</td>
+				<td th:utext="${customer.country}">...</td>
+				<td><a th:href="@{/detail/{id}(id=${product.id})}">Detail</a>
+					&nbsp;&nbsp;&nbsp; <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
