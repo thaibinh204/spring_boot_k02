@@ -9,5 +9,7 @@ import com.k02.entity.Customer;
 public interface CustomerService {
 	void save (Customer customer);
 	 List<Customer> findAll();
+	 Customer findById(Long id);
+	 Customer findCustomerByIdQuery(Long id);
 
 }

@@ -23,6 +23,17 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepository.findAll();
 	}
 
+	@Override
+	public Customer findById(Long id) {		
+		return customerRepository.getOne(id);
+	}
+
+	@Override
+	public Customer findCustomerByIdQuery(Long id) {
+		
+		return customerRepository.findCustomerByIdQuery(id);
+	}
+
 	
 
 }
