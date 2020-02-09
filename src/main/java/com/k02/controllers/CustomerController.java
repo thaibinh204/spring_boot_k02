@@ -1,6 +1,8 @@
 package com.k02.controllers;
 
-import java.util.List;
+
+
+//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,10 @@ import com.k02.service.CustomerService;
 
 @Controller
 public class CustomerController {
+	//@Autowired
+	//private List<Customer> customers;
 	@Autowired
-	private static List<Customer> customers;
-	@Autowired
-	private static  CustomerService customerService;
+	private CustomerService customerService;
 
 	 @RequestMapping(value = { "/customerList" }, method = RequestMethod.GET)
 	 public String customerList(Model model){
@@ -29,7 +31,9 @@ public class CustomerController {
 
 		@RequestMapping(value = { "/detail" }, method = RequestMethod.GET)
 		public String detail(Model model, @RequestParam(name = "id") long id) {
-			Customer customer = customerService.findCustomerByIdQuery(id);
+			Customer customer = new Customer();
+			//customer = customerService.findCustomerByIdQuery(id);
+			customer = customerService.findById(id);
 			String name = customer.getCustomerName();
 			model.addAttribute("customer", customer);
 			return "detail";
