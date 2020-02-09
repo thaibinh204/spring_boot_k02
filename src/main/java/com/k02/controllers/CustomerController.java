@@ -44,6 +44,19 @@ public class CustomerController {
 			return "addCustomer";
 		}
 
+		@RequestMapping(value = {"/saveCustomer"}, method = RequestMethod.POST)
+		public String saveCustomer(Model model, @ModelAttribute("customerForm") CustomerForm customerForm) {
+			Customer customer = new Customer();
+			customer.setCustomerName(customerForm.getCustomerName());
+			customer.setContactName(customerForm.getContactName());
+			customer.setAddress(customerForm.getAddress());
+			customer.setCity(customerForm.getCity());
+			customer.setPostalCode(customerForm.getPostalCode());
+			customer.setCountry(customerForm.getCountry());
+			customerService.save(customer);
+			return "redirect:/customerList";
+		}
+
 		@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
 		public String edit(Model model) {
 
