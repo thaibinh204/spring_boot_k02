@@ -22,7 +22,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -38,7 +38,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/webjars/**").permitAll()
 				.antMatchers("/css/**", "/js/**", "/templates/**").permitAll()
 				.antMatchers("/favicon.ico").permitAll()
-				.antMatchers("/", "/home", "/about", "/logout", "/registration","/lophoc","/customerList","/detail").permitAll()
+				.antMatchers("/", "/home", "/about", "/logout", "/registration","/lophoc").permitAll()
+				.antMatchers("/customerList","/detail","/addCustomer").permitAll()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN")
 				.antMatchers("/user/**").hasAnyRole("USER")
 				.anyRequest().authenticated().and()
