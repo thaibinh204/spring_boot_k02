@@ -59,8 +59,8 @@ public class DefaultController {
     
     @RequestMapping(value = { "/customerList" }, method = RequestMethod.GET) 
 	public String customerList(Model model){
-    	customers = customerService.findAll();
-		model.addAttribute("customers", customers);
+    	//customers = customerService.findAll();
+		//model.addAttribute("customers", customers);
 		return "customerList";
 		
 	}
@@ -80,6 +80,11 @@ public class DefaultController {
 		return "delete";
 	}
 
+	@RequestMapping(value = { "/addCustomer" }, method = RequestMethod.GET)
+	public String addCustomer(Model model) {
+		
+		return "AddCustomer";
+	}
     @GetMapping("/403")
     public String error403() {
         return "/error/403";

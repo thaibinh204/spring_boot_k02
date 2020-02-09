@@ -23,17 +23,17 @@ line-height: 1.5;
 	<div>
 	
 		Customer Name: <br>
-			 <input type="text"/> <br />
+			 <input type="text" th:field="*{customerName}"/> <br />
 		Contact Name:	<br>
-		<input type="text"  /> <br /> 
+		<input type="text" th:field="*{customercontact}" /> <br /> 
 		Address: <br>
-			<input type="text"/> <br/>
+			<input type="text" th:field="*{address}"/> <br/>
 		City: 	<br>
-		<input type="text"/> <br/>
+		<input type="text" th:field="*{city}"/> <br/>
 		Postal Code:<br>
-		 <input type="text"/> <br/>
+		 <input type="text" th:field="*{postalCode}"/> <br/>
 		Country: 	<br>
-			<input type="text"/> <br/><br>
+			<input type="text" th:field="*{country}"/> <br/><br>
 				<input type="submit" value="Create" />
 				</div>>
 	</form>
