@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<meta lang= "en" charset="UTF-8" />
 <title>Person List</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 </head>
@@ -10,9 +10,7 @@
 	<p align="center">
 		<a href="addCustomer"> Create New Product</a>
 	</p>
-	<p align="center">
-		<a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
-	</p>
+	
 
 	<div>
 		<table align="center" border="1">
@@ -32,7 +30,7 @@
 				<td th:utext="${customer.city}">...</td>
 				<td th:utext="${customer.postalCode}">...</td>
 				<td th:utext="${customer.country}">...</td>
-				<td><a th:href="@{/detail/{id}(id=${customer.id})}">Detail</a>
+				<td><a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
 					&nbsp;&nbsp;&nbsp; <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
 					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
 				</td>

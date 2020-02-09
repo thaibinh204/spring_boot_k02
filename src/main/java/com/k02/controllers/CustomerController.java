@@ -30,8 +30,8 @@ public class CustomerController {
 		@RequestMapping(value = { "/detail" }, method = RequestMethod.GET)
 		public String detail(Model model, @RequestParam(name = "id") long id) {
 			Customer customer = new Customer();
-			//customer = customerService.findCustomerByIdQuery(id);
-			customer = customerService.findById(id);
+			customer = customerService.findCustomerByIdQuery(id);
+//			customer = customerService.findById(id);
 			model.addAttribute("customer", customer);
 			return "detail";
 		}
