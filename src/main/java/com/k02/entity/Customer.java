@@ -9,28 +9,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customers")
-
-
 public class Customer {
 	@Id
 	@Column(name ="customer_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column(name ="customer_name")
 	private String customerName;
-	
+
 	@Column(name ="contact_name")
 	private String contactName;
-	
+
 	@Column(name ="address")
 	private String address;
-	
+
 	@Column(name ="city")
 	private String city;
-	
+
 	@Column( name="postalcode")
 	private String postalCode;
-	
+
 	@Column( name="country")
 	private String country;
 
