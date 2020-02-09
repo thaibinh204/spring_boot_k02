@@ -20,13 +20,6 @@ import com.k02.service.CustomerService;
 
 @Controller
 public class DefaultController {
-	// bien toan cuc
-	@Autowired
-	private static List<Customer> customers;
-	@Autowired
-	private static  CustomerService customerService;
-
-	 
 
     @GetMapping("/")
     public String home1() {
@@ -60,32 +53,6 @@ public class DefaultController {
     public String login() {
         return "/login";
     }
-    
-    @RequestMapping(value = { "/customerList" }, method = RequestMethod.GET) 
-	public String customerList(Model model){
-//    	customers = customerService.findAll();
-//		model.addAttribute("customers", customers);
-		return "customerList";
-		
-	}
-    
-	@RequestMapping(value = { "/detail" }, method = RequestMethod.GET)
-	public String detail(Model model, @RequestParam(name = "id") long id) {
-		Customer customer = customerService.findCustomerByIdQuery(id);
-		String name = customer.getCustomerName();
-		model.addAttribute("customer", customer);
-		return "detail";
-	}
-	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
-	public String edit(Model model) {
-		
-		return "edit";
-	}
-	@RequestMapping(value = { "/delete" }, method = RequestMethod.GET)
-	public String delete(Model model) {
-		
-		return "delete";
-	}
 
     @GetMapping("/403")
     public String error403() {
