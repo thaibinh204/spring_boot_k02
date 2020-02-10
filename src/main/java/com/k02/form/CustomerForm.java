@@ -1,6 +1,7 @@
 package com.k02.form;
 
 public class CustomerForm {
+	private long id;
 	private String customerName;
 	private String contactName;
 	private String address;
@@ -9,6 +10,14 @@ public class CustomerForm {
 	private String country;
 
 	public void CustomerForm() {
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getCustomerName() {

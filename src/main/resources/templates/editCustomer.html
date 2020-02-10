@@ -9,13 +9,13 @@
 	<div align="center">
 		<h1>Create New Customer</h1>
 		<br />
-		<br />
 		<p align="center">
 			<a href="customerList">Customer List</a>
 		</p>
 		<form action="#" th:action="@{/saveCustomer}" th:object="${customerForm}" method="post">
 
 			<table border="0" cellpadding="10">
+				<input type="hidden" th:field="*{id}" />
 				<tr>
 					<td>Customer Name:</td>
 					<td><input type="text" th:field="*{customerName}" /></td>

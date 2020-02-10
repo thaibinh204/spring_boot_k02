@@ -47,6 +47,7 @@ public class CustomerController {
 		@RequestMapping(value = {"/saveCustomer"}, method = RequestMethod.POST)
 		public String saveCustomer(Model model, @ModelAttribute("customerForm") CustomerForm customerForm) {
 			Customer customer = new Customer();
+			customer.setId(customerForm.getId());
 			customer.setCustomerName(customerForm.getCustomerName());
 			customer.setContactName(customerForm.getContactName());
 			customer.setAddress(customerForm.getAddress());
@@ -57,15 +58,24 @@ public class CustomerController {
 			return "redirect:/customerList";
 		}
 
-		@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
-		public String edit(Model model) {
-
-			return "edit";
+		@RequestMapping(value = { "/editCustomer" }, method = RequestMethod.GET)
+		public String edit(Model model, @RequestParam(name = "id") long id) {
+			Customer customer = customerService.findById(id);
+		    CustomerForm customerForm = new CustomerForm();
+		    customerForm.setId(id);
+		    customerForm.setCustomerName(customer.getCustomerName());
+		    customerForm.setContactName(customer.getContactName());
+		    customerForm.setAddress(customer.getAddress());
+		    customerForm.setCity(customer.getCity());
+		    customerForm.setPostalCode(customer.getPostalCode());
+		    customerForm.setCountry(customer.getCountry());
+		    model.addAttribute("customerForm", customerForm);
+			return "editCustomer";
 		}
 
-		@RequestMapping(value = { "/delete" }, method = RequestMethod.GET)
+		@RequestMapping(value = { "/deleteCustomer" }, method = RequestMethod.GET)
 		public String delete(Model model) {
 
-			return "delete";
+			return "redirect:/customerList";
 		}
 }
