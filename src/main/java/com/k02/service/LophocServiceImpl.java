@@ -1,4 +1,6 @@
 package com.k02.service;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,13 @@ public class LophocServiceImpl implements LophocService {
 	public Lophoc findById(Long id) {
 		
 		return lophocRepository.getOne(id);
+	}
+
+
+	@Override
+	public List<Lophoc> findAll() {
+		
+		return lophocRepository.findAll();
 	}
 
 }

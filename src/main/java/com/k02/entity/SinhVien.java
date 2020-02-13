@@ -31,9 +31,20 @@ public class SinhVien {
 	@Column(name = "ngay_sinh")
 	private Date ngaySinh;
 
+//	@OneToMany(mappedBy = "sinhvien", cascade = CascadeType.ALL)
+//	private Set<BangDiem> dSBD = new HashSet<BangDiem>();
+//
+//	public Set<BangDiem> getdSBD() {
+//		return dSBD;
+//	}
+//
+//	public void setdSBD(Set<BangDiem> dSBD) {
+//		this.dSBD = dSBD;
+//	}
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Lophoc lophoc;
-	
+
 	public Lophoc getLophoc() {
 		return lophoc;
 	}

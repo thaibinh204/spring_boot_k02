@@ -7,20 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
-
+//import com.k02.entity.BangDiem;
 import com.k02.entity.Lophoc;
 import com.k02.entity.User;
 import com.k02.service.LophocService;
-
 
 import com.k02.entity.Monhoc;
 import com.k02.entity.SinhVien;
 import com.k02.entity.User;
 import com.k02.service.MonhocService;
-
+import com.k02.service.SinhVienService;
 import com.k02.service.UserService;
 
 @Controller
@@ -31,13 +27,14 @@ public class Example {
 	private LophocService lophocSrv;
 	@Autowired
 	private MonhocService monhocSrv;
-	
-	
+	@Autowired
+	private SinhVienService sinhVienService;
+
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String hello() {
-	      //tao doi tuong uuser
-              //them file hello
+		// tao doi tuong uuser
+		// them file hello
 		User user = new User();
 		user.setUsername("thaibinh");
 		user.setPassword("123456");
@@ -53,22 +50,22 @@ public class Example {
 //		lophoc.setTenLopHoc("lop1");
 //		lophoc.setTongSoSinhVien(30);
 //		lophocSrv.save(lophoc);
-		
+
 		// Lay lop hoc
 		Lophoc lopHoc = lophocSrv.findById(1l);
-	
-		String result ="";
-		if(lopHoc != null) {
+
+		String result = "";
+		if (lopHoc != null) {
 			// mac dinh là trong lop hoc co chua danh sach sv cua lop do
 			// nen get danh sach sv
 			Set<SinhVien> sinhViens = lopHoc.getDsSV();
 			// lay tat ca ten sv trong danh sach roi hien thi len man hinh
 			for (SinhVien sinhVien : sinhViens) {
-				result += sinhVien.getTenSinhVien()+"</br>";
+				result += sinhVien.getTenSinhVien() + "</br>";
 			}
 		}
-		return  result + "</br></br> nhap thong tin thanh cong";
-		
+		return result + "</br></br> nhap thong tin thanh cong";
+
 	}
 
 	@RequestMapping("/monhoc")
@@ -79,8 +76,21 @@ public class Example {
 		mh.setTenmonhoc("Toan");
 		monhocSrv.save(mh);
 		return "Them bang mon hoc thanh cong";
-		
+
 	}
-	
+
+//	@RequestMapping("/sinhvien")
+//	@ResponseBody
+//	public String SinhVien() {
+//		SinhVien sinhVien = sinhVienService.findById(5L);
+//		String resultBD = "";
+//		if (sinhVien != null) {
+//			Set<BangDiem> bangDiems = sinhVien.getdSBD();
+//			for (BangDiem bangDiem : bangDiems) {
+//				resultBD += bangDiem.getDiem();
+//			}
+//		}
+//		return resultBD + "Thong tin sinh vien";
+//	}
 
 }

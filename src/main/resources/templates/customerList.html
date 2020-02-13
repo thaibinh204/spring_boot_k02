@@ -31,7 +31,7 @@
 				<td th:utext="${customer.postalCode}">...</td>
 				<td th:utext="${customer.country}">...</td>
 				<td><a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
+					<a th:href="@{/edit?id={id}(id=${customer.id})}">Edit</a>
 					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
 				</td>
 			</tr>
