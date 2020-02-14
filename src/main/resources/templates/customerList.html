@@ -7,10 +7,54 @@
 </head>
 <body>
 	<h1 align="center">Customer List</h1>
-	<p align="center">
+	<form th:action="@{searchCustomer}" method="POST" th:object="${searchCustomerForm}">
+		<table align="center" border="0">
+			<tr>
+				<td>Customer name  </td>
+				<td>: </td>
+				<td style="padding-left: 15px;"><input type="text" th:field="*{customerName}"/> </td>
+			</tr>
+	<!--  <tr>
+				<td>Contact name  </td>
+				<td> : </td>
+				<td style="padding-left: 15px;"> <input type="text" th:field="*{contactName}"/> </td>
+			</tr>
+			<tr>
+				<td>Address  </td>
+				<td>: </td>
+				<td style="padding-left: 15px;"><input type="text" th:field="*{address}"/> </td>
+			</tr>
+			<tr>
+				<td>City  </td>
+				<td>: </td>
+				<td style="padding-left: 15px;"><input type="text" th:field="*{city}"/> </td>
+			</tr>
+			<tr>
+				<td>Postalcode  </td>
+				<td>: </td>
+				<td style="padding-left: 15px;"><input type="text" th:field="*{postalCode}"/> </td>
+			</tr>
+			<tr>
+				<td>Country  </td>
+				<td>: </td>
+				<td style="padding-left: 15px;"><input type="text" th:field="*{country}"/> </td>
+			</tr>
+			-->
+			<tr>
+				<td colspan="3" align="center" style="padding-top: 15px;">
+				<button type="submit">Search</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+<br>
+<br>
+<hr>
+<br><br>
+    <p align="center">
 		<a href="addCustomer"> Create New Customer</a>
 	</p>
-
+	<br>
 	<div>
 		<table align="center" border="1">
 			<tr>

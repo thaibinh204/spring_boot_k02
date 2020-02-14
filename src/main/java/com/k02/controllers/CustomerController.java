@@ -2,6 +2,7 @@ package com.k02.controllers;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.k02.entity.Customer;
 import com.k02.form.CustomerForm;
+import com.k02.form.SearchCustomerForm;
 import com.k02.service.CustomerService;
 
 @Controller
@@ -24,6 +26,8 @@ public class CustomerController {
 	 @RequestMapping(value = { "/customerList" }, method = RequestMethod.GET)
 	 public String customerList(Model model){
 		    List<Customer> customers = customerService.findAll();
+		    SearchCustomerForm searchCustomerForm = new SearchCustomerForm();
+		    model.addAttribute("searchCustomerForm", searchCustomerForm);
 			model.addAttribute("customers", customers);
 			return "customerList";
 		}
@@ -77,5 +81,17 @@ public class CustomerController {
 		public String delete(Model model, @RequestParam(name = "id") long id) {
 			customerService.delete(id);
 			return "redirect:/customerList";
+		}
+
+		@RequestMapping(value = {"/searchCustomer"}, method = RequestMethod.POST)
+		public String searchCustomer(Model model, @ModelAttribute("searchCustomerForm") SearchCustomerForm searchCustomerForm) {
+
+			List<Customer> resultSearch = new ArrayList<>();
+			resultSearch = customerService.search(searchCustomerForm.getCustomerName());
+			//resultSearch = customerService.searchByCustomerNameAndCountry(searchCustomerForm.getCustomerName(), searchCustomerForm.getCountry());
+
+		    model.addAttribute("searchCustomerForm", searchCustomerForm);
+			model.addAttribute("customers", resultSearch);
+			return "customerList";
 		}
 }

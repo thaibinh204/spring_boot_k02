@@ -10,4 +10,6 @@ public interface CustomerService {
 	 Customer findById(Long id);
 	 Customer findCustomerByIdQuery(Long id);
 	 void delete (Long id);
+	 List<Customer> search(String customerName);
+	 List<Customer> searchByCustomerNameAndCountry(String customerName, String country);
 }

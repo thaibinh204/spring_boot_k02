@@ -1,4 +1,6 @@
 package com.k02.service;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,31 @@ public class CustomerServiceImpl implements CustomerService{
 	public void delete(Long id) {
 		customerRepository.deleteById(id);
 
+	}
+
+	@Override
+	public List<Customer> search(String customerName) {
+		if (customerName == null) {
+			customerName = "";
+		}
+
+		List<Customer> resultSearch = new ArrayList<>();
+		resultSearch = (List<Customer>) customerRepository.search(customerName);
+		return resultSearch;
+
+
+	}
+
+	@Override
+	public List<Customer> searchByCustomerNameAndCountry(String customerName, String country) {
+		// TODO 自動生成されたメソッド・スタブ
+		if (customerName == null) {
+			customerName = "";
+		}
+		if (country == null) {
+			country = "";
+		}
+		return customerRepository.findByCustomerNameAndCountry(customerName, country);
 	}
 
 
