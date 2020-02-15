@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Add Customer</title>
+<title>Edit Customer</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<h1>Create a Customer:</h1>
+	<h1>Edit a Customer:</h1>
 	<!--
 In Thymeleaf the equivalent of
 JSP's ${pageContext.request.contextPath}/edit.html
@@ -21,7 +21,7 @@ line-height: 1.5;
 }</style>
 	<form th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
 	<div>
-	
+		<input type="hidden" th:field="*{id}" />	
 		Customer Name: <br>
 			 <input type="text" th:field="*{customerName}"/> <br />
 		Contact Name:	<br>
@@ -34,8 +34,8 @@ line-height: 1.5;
 		 <input type="text" th:field="*{postalCode}"/> <br/>
 		Country: 	<br>
 			<input type="text" th:field="*{country}"/> <br/><br>
-				<input type="submit" value="Create" />
-				</div>
+				<input type="submit" value="Save" />
+				</div>>
 	</form>
 	<br />
 	<!-- Check if errorMessage is not null and not empty -->

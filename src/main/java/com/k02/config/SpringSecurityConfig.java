@@ -38,7 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/webjars/**").permitAll()
 				.antMatchers("/css/**", "/js/**", "/templates/**").permitAll()
 				.antMatchers("/favicon.ico").permitAll()
-				.antMatchers("/", "/home", "/about", "/logout", "/registration","/lophoc","/customerList","/detail","/addCustomer").permitAll()
+				.antMatchers("/", "/home", "/about", "/logout", "/registration","/lophoc","/customerList","/detail","/addCustomer","/editCustomer","/saveCustomer","/delete").permitAll()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN")
 				.antMatchers("/user/**").hasAnyRole("USER")
 				.anyRequest().authenticated().and()

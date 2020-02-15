@@ -34,6 +34,12 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepository.findCustomerByIdQuery(id);
 	}
 
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		customerRepository.deleteById(id);
+	}
+
 	
 
 }
