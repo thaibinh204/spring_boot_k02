@@ -32,6 +32,32 @@ public class Customer {
 
 	@Column( name="country")
 	private String country;
+	
+	@Column( name ="dept_id")
+	private String deptId;
+	
+	@Column( name ="sex")
+	private String sex;
+	
+	public Customer() {
+		
+	}
+	
+	public String getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(String deptId) {
+		this.deptId = deptId;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
 	public Long getId() {
 		return id;

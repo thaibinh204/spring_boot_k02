@@ -1,9 +1,11 @@
 package com.k02.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.k02.dto.CustomerDeptDto;
 import com.k02.entity.Customer;
 import com.k02.repository.CustomerRepository;
 
@@ -64,6 +66,12 @@ public class CustomerServiceImpl implements CustomerService{
 	public List<Customer> search(String customerName) {
 		
 		return customerRepository.search(customerName);
+	}
+
+	@Override
+	public List<CustomerDeptDto> getListCustomerDept() {
+		
+		return customerRepository.getListCustomerDept();
 	}
 
 	

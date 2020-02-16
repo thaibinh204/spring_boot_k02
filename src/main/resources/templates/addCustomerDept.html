@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Edit Product</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}" />
+</head>
+<body>
+	<h1 align="center">Add Customer</h1>
+	<p align="center">
+		<a href="customerList">Customer List</a>
+	</p>
+	<form th:action="@{/saveCustomerDept}" th:object="${addCustomer}"
+		method="POST">
+		<table align="center">
+
+			<tr>
+				<th class="a">Customer name:</th>
+
+				<td><input type="text" th:field="*{customerName}" /></td>
+			</tr>
+			<tr>
+				<th class="a">Contact Name:</th>
+
+				<td><input type="text" th:field="*{contactName}" />
+			</tr>
+			<tr>
+				<th class="a">Address:</th>
+
+				<td><input type="text" th:field="*{address}" /></td>
+			</tr>
+			<tr>
+				<th class="a">City:</th>
+
+				<td><input type="text" th:field="*{city}" /></td>
+			</tr>
+			<tr>
+				<th class="a">Postalcode:</th>
+
+				<td><input type="text" th:field="*{postalCode}" /></td>
+			</tr>
+			<tr>
+				<th class="a">Country:</th>
+
+				<td><input type="text" th:field="*{country}" /></td>
+			</tr>
+			<tr>
+				<th><label for="cars">Department:</label></th>
+				<td>
+				<select class="form-control" id="exampleSelect" name="deptId">
+						<option th:each="item : ${mapDept}" th:value="${item.key}"
+							th:text="${item.value}" th:selected="${item.key} == *{deptId}">pulldown</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<th><label>Sex</label></th>
+				<td>
+				<label for="male">Male</label> <input type="radio"
+					id="male" name="sex" value="male"> <label for="female">Female</label>
+					<input type="radio" id="female" name="sex" value="female">
+					<label for="other">Other</label> <input type="radio" id="other"	name="sex" value="other">
+					</td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="submit" value="Save" />
+		</div>

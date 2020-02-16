@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang= "en" charset="UTF-8" />
+<title>Customer Department List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1 align="center">Customer Department List </h1>
+	
+	<p align="center">
+		<a href="addCustomerList"> Create New Customer Department</a>
+	</p>
+	
+
+	<div>
+		<table align="center" border="1">
+			<tr>
+				<th>Customer name</th>
+				<th>Address</th>
+				<th>Country</th>
+				<th>Department Name</th>
+				<th>Sex</th>
+			</tr>
+			<tr th:each="customerDto : ${customers}">
+				<td th:utext="${customerDto.customerName}">...</td>
+				<td th:utext="${customerDto.address}">...</td>
+				<td th:utext="${customerDto.country}">...</td>
+				<td th:utext="${customerDto.deptName}">...</td>
+				<td th:utext="${customerDto.sex}">...</td>
+			
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

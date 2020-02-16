@@ -2,6 +2,7 @@ package com.k02.service;
 
 import java.util.List;
 
+import com.k02.dto.CustomerDeptDto;
 import com.k02.entity.Customer;
 
 public interface CustomerService {
@@ -26,4 +27,5 @@ public interface CustomerService {
 			String country, Long id);
 	
 	List<Customer> search(String customerName); 
+	List<CustomerDeptDto> getListCustomerDept();
 }
