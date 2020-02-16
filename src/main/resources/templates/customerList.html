@@ -6,7 +6,22 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 </head>
 <body>
-	<h1 align="center">Customer List</h1>
+	<h1 align="center">Customer List </h1>
+	<form th:action="@{search}" th:object="${searchForm}" method="POST">
+	<table align="center">
+		<tr>
+			<th>CutomerName:</th>
+			<td><input type="text" th:field="*{customerName}"/></td>		
+		</tr>
+		<tr>
+			<td colspan = "2" align="center" ><input type="submit" value="Search"  /></td>
+		</tr>
+	</table>
+	</form>
+	
+	<hr>
+	<br><br>
+	
 	<p align="center">
 		<a href="addCustomer"> Create New Product</a>
 	</p>
@@ -32,7 +47,7 @@
 				<td th:utext="${customer.country}">...</td>
 				<td><a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
 					<a th:href="@{/edit?id={id}(id=${customer.id})}">Edit</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
+					<a th:href="@{/delete?id={id}(id=${customer.id})}">Delete</a>
 				</td>
 			</tr>
 		</table>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang= "en" charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1 align="center">Danh Sach Lop Hoc</h1>	
+	<div>
+		<table align="center" border="1">
+			<tr>
+				<th>Ma Lop hoc</th>
+				<th>Ten Lop Hoc</th>
+				<th>Tong So Sinh Vien</th>
+			</tr>
+			<tr th:each="lophoc : ${lophocs}">
+				<td th:utext="${lophoc.maLopHoc}">...</td>
+				<td th:utext="${lophoc.tenLopHoc}">...</td>
+				<td th:text="${lophoc.tongSoSinhVien}"></td>				
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

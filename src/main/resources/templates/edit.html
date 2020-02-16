@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Edit Product</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/edit.css}" />
+</head>
+<body>
+	<h1 align="center">Edit Product</h1>
+	<p align="center">
+		<a href="customerList">Customer List</a>
+	</p>
+	<form th:action="@{/edit}" th:object="${editCustomer}" method="POST">
+		<table align="center" border="1">
+		
+			<input type="hidden" th:field="*{id}" />
+			<tr>
+				<th class ="a">Customer name:</th>
+				
+				<td><input type="text" th:field="*{customerName}" /></td>
+			</tr>
+			<tr>
+				<th class ="a">Contact Name:</th>
+			
+				<td><input type="text" th:field="*{contactName}" />
+			</tr>
+			<tr>
+				<th class ="a">Address:</th>
+				
+				<td><input type="text" th:field="*{address}" /></td>
+			</tr>
+			<tr>
+				<th class ="a">City:</th>
+				
+				<td><input type="text" th:field="*{city}" /></td>
+			</tr>
+			<tr>
+				<th class ="a">Postalcode:</th>
+				
+				<td><input type="text" th:field="*{postalCode}" /></td>
+			</tr>
+			<tr>
+				<th class ="a">Country:</th>
+				
+				<td><input type="text" th:field="*{country}" /></td>
+			</tr>
+		</table>
+		<div align="center" >
+			<input type="submit" value="Save"  />
+		</div>
+
+
+	</form>
+
+</body>
+</html>

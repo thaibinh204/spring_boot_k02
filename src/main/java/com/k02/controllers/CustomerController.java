@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.k02.entity.Customer;
 import com.k02.entity.Lophoc;
 import com.k02.entity.SinhVien;
+import com.k02.form.SearchForm;
 import com.k02.service.CustomerService;
 import com.k02.service.LophocService;
 import com.k02.service.SinhVienService;
 
 @Controller
 public class CustomerController {
+	
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
@@ -26,49 +28,104 @@ public class CustomerController {
 	@Autowired
 	private LophocService lophocService;
 
-	 @RequestMapping(value = { "/customerList" }, method = RequestMethod.GET)
-	 public String customerList(Model model){
-		    List<Customer> customers = customerService.findAll();
-			model.addAttribute("customers", customers);
-			return "customerList";
+	@RequestMapping(value = { "/customerList" }, method = RequestMethod.GET)
+	public String customerList(Model model) {
+		List<Customer> customers = customerService.findAll();
+		model.addAttribute("customers", customers);
+		 SearchForm searchForm = new SearchForm(); 
+		 model.addAttribute("searchForm", searchForm);
+		return "customerList";
 
-		}
-	 @RequestMapping(value = { "/LopHocList" }, method = RequestMethod.GET)
-	 public String lopHocList(Model model) {
-		 List<Lophoc> lophoc = lophocService.findAll();
-		 model.addAttribute("lophocs", lophoc);
-		 return "lopHocList";
-	 }
-	 @RequestMapping(value = { "/SinhVienList" }, method = RequestMethod.GET)
-	 public String sinhVienList(Model model) {
-		 List<SinhVien> sinhVien = sinhVienService.findAll();
-		 model.addAttribute("sinhviens", sinhVien );
-		 return "SinhVienList"; 
-		 
-	 }
-		@RequestMapping(value = { "/detail" }, method = RequestMethod.GET)
-		public String detail(Model model, @RequestParam(name = "id") long id) {
-			Customer customer = new Customer();
+		
+	}
+	@RequestMapping(value = {"/search"}, method = RequestMethod.POST)
+	public String searchCustomer(Model model,  @ModelAttribute("searchForm") SearchForm searchForm) {
+		List<Customer> customers = customerService.search(searchForm.getCustomerName());
+		model.addAttribute("customers", customers);
+		
+		model.addAttribute("searchForm", searchForm);
+		return "customerList";
+	}
+
+	@RequestMapping(value = { "/LopHocList" }, method = RequestMethod.GET)
+	public String lopHocList(Model model) {
+		List<Lophoc> lophoc = lophocService.findAll();
+		model.addAttribute("lophocs", lophoc);
+		return "lopHocList";
+	}
+
+	@RequestMapping(value = { "/SinhVienList" }, method = RequestMethod.GET)
+	public String sinhVienList(Model model) {
+		List<SinhVien> sinhVien = sinhVienService.findAll();
+		model.addAttribute("sinhviens", sinhVien);
+		return "SinhVienList";
+
+	}
+
+	@RequestMapping(value = { "/detail" }, method = RequestMethod.GET)
+	public String detail(Model model, @RequestParam(name = "id") long id) {
+		Customer customer = new Customer();
 //			customer = customerService.findCustomerByIdQuery(id);
 		customer = customerService.findById(id);
-			model.addAttribute("customer", customer);
-			return "detail";
-		}
-		@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
-		public String edit(Model model, @RequestParam(name = "id") long id) {
-			Customer editCustomer = new Customer();
-			editCustomer = customerService.findById(id);
-			model.addAttribute("editCustomer", editCustomer);
-			return "edit";
-		}
-		@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-		public String saveedit(Model model, 
-				@ModelAttribute ("editCustomer") Customer cutomer) {
+		model.addAttribute("customer", customer);
+		return "detail";
+	}
+
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
+	public String edit(Model model, @RequestParam(name = "id") long id) {
+		Customer editCustomer = new Customer();
+		editCustomer = customerService.findById(id);
+		model.addAttribute("editCustomer", editCustomer);
+		return "edit";
+	}
+	@RequestMapping(value = {"/addCustomer"}, method = RequestMethod.GET)
+	public String addCustomer(Model model) {
+		Customer addCustomer = new Customer();
+		model.addAttribute("addCustomer",addCustomer);
+		return "addCustomer";
+	}
+	@RequestMapping(value = {"/addCustomer"}, method = RequestMethod.POST)
+	public String saveAddCustomer(Model model, @ModelAttribute("addCustomer") Customer addCustomer) {
+		Customer customer = new Customer();
+		customer.setCustomerName(addCustomer.getCustomerName());
+		customer.setContactName(addCustomer.getContactName());
+		customer.setAddress(addCustomer.getAddress());
+		customer.setCity(addCustomer.getCity());
+		customer.setCountry(addCustomer.getCountry());
+		customer.setPostalCode(addCustomer.getPostalCode());
+		//insert xuong database bang sql
+		customerService.saveSql(customer.getCustomerName(), customer.getContactName(),
+				customer.getAddress(), customer.getCity(),customer.getPostalCode(),customer.getCountry());
+
+		// insert xuong database bang ham co san cua JPA
+		//		customerService.save(customer);
+		return "redirect:/customerList";
+	}
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
+	public String saveedit(Model model, @ModelAttribute("editCustomer") Customer editCustomer) {
+		Customer customer = new Customer();
+		customer.setId(editCustomer.getId());
+		customer.setCustomerName(editCustomer.getCustomerName());
+		customer.setContactName(editCustomer.getContactName());
+		customer.setAddress(editCustomer.getAddress());
+		customer.setCity(editCustomer.getCity());
+		customer.setCountry(editCustomer.getCountry());
+		customer.setPostalCode(editCustomer.getPostalCode());
+		 //update xuong database bang sql
 		
-			return "edit";
-		}
-		@RequestMapping(value = { "/delete" }, method = RequestMethod.DELETE)
-		public String delete(Model model) {
-			return "delete";
-		}
+		customerService.updateSql(customer.getCustomerName(), customer.getContactName(), customer.getAddress(),
+				customer.getCity(), customer.getPostalCode(), customer.getCountry(), customer.getId());
+		//update xuong database bang ham cua JPA co san
+//		customerService.save(customer);
+//		model.addAttribute("editCustomer", customer);
+		// save xong di sang customerList xem xong co sua dc hay chua
+		return "redirect:/customerList";
+	}
+
+	@RequestMapping(value = { "/delete" }, method = RequestMethod.GET)
+	public String delete(Model model, @RequestParam(name = "id") long id) {
+//		customerService.deleteById(id);
+		customerService.deleteSql(id);
+		return "redirect:/customerList";
+	}
 }

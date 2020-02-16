@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang= "en" charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1 align="center">Danh Sach Sinh Vien</h1>	
+	<div>
+		<table align="center" border="1">
+			<tr>
+				<th>Ma Sinh Vien</th>
+				<th>Ten Sinh Vien</th>
+				<th>Ngay Sinh</th>
+			</tr>
+			<tr th:each="sinhvien : ${sinhviens}">
+				<td th:utext="${sinhvien.maSinhVien}">...</td>
+				<td th:utext="${sinhvien.tenSinhVien}">...</td>
+				<td th:text="${#dates.format(sinhvien.ngaySinh, 'dd-MMM-yyyy')}"></td>				
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
