@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
+
+
 import com.k02.entity.Lophoc;
 import com.k02.entity.User;
 import com.k02.service.LophocService;
+
 
 import com.k02.entity.Monhoc;
 import com.k02.entity.SinhVien;
@@ -25,13 +29,15 @@ public class Example {
 	private UserService userSrv;
 	@Autowired
 	private LophocService lophocSrv;
-	
 	@Autowired
 	private MonhocService monhocSrv;
+	
 	
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String hello() {
+	      //tao doi tuong uuser
+              //them file hello
 		User user = new User();
 		user.setUsername("thaibinh");
 		user.setPassword("123456");
@@ -75,5 +81,6 @@ public class Example {
 		return "Them bang mon hoc thanh cong";
 		
 	}
+	
 
 }
