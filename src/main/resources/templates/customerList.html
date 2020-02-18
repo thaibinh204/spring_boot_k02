@@ -7,14 +7,33 @@
 </head>
 <body>
 	<h1 align="center">Customer List</h1>
+	<p th:utext="${txtDeleteCus}" align="center">
+	</p>
 	<p align="center">
 		<a href="addCustomer"> Create New Product</a>
 	</p>
-	
+	<div>
+		<form th:action="@{/search}" method="POST">
+			<table align="center" border="0">
+				<tr>
+					<th></th>
+					<th><input type="text" name="txtSearch" id="txtSearch" /></th>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="btsearch" id="txtSearch" /></td>
+				</tr>
+			</table>
+		</form>
+		<br>
+		</br>
+	</div>
 
 	<div>
+		<p></p>
 		<table align="center" border="1">
 			<tr>
+				<th>Customer id</th>
 				<th>Customer name</th>
 				<th>Contact name</th>
 				<th>Address</th>
@@ -24,15 +43,19 @@
 				<th>Actions</th>
 			</tr>
 			<tr th:each="customer : ${customers}">
+				<td th:utext="${customer.Id}">...</td>
 				<td th:utext="${customer.customerName}">...</td>
 				<td th:utext="${customer.contactName}">...</td>
 				<td th:utext="${customer.address}">...</td>
 				<td th:utext="${customer.city}">...</td>
 				<td th:utext="${customer.postalCode}">...</td>
 				<td th:utext="${customer.country}">...</td>
-				<td><a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
-					&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${customer.id}}">Delete</a>
+				<td>
+					<a th:href="@{/add}">Add</a>
+					&nbsp;&nbsp;&nbsp;
+					<a th:href="@{/detail?id={id}(id=${customer.id})}">Detail</a>
+					&nbsp;&nbsp;&nbsp; <a th:href="@{/edit?id={id}(id=${customer.id})}">Edit</a>
+					&nbsp;&nbsp;&nbsp; <a th:href="@{/delete?id={id}(id=${customer.id})}">Delete</a>
 				</td>
 			</tr>
 		</table>

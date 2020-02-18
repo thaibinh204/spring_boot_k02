@@ -21,6 +21,10 @@ public class MonhocServiceImpl implements MonhocService {
 		 monhocRepository.save(mh);
     } 
 
+	 @Override
+    public Monhoc findByMonhoc(Long id) {
+		 return monhocRepository.getOne(id);
+    } 
    
 	
 

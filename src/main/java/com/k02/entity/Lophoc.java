@@ -31,7 +31,7 @@ public class Lophoc {
 	private Integer tongSoSinhVien;
 
 	@OneToMany(mappedBy = "lophoc", cascade = CascadeType.ALL)
-	private Set<SinhVien> dsSV = new HashSet<SinhVien>();
+	private Set<Sinhvien> dsSV = new HashSet<Sinhvien>();
 
 	public Long getId() {
 		return id;
@@ -65,11 +65,11 @@ public class Lophoc {
 		this.tongSoSinhVien = tongSoSinhVien;
 	}
 
-	public Set<SinhVien> getDsSV() {
+	public Set<Sinhvien> getDsSV() {
 		return dsSV;
 	}
 
-	public void setDsSV(Set<SinhVien> dsSV) {
+	public void setDsSV(Set<Sinhvien> dsSV) {
 		this.dsSV = dsSV;
 	}
 

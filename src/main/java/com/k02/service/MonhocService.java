@@ -4,4 +4,5 @@ import com.k02.entity.Monhoc;
 
 public interface MonhocService {
 	void save(Monhoc monhoc);
+	Monhoc findByMonhoc(Long id);
 }

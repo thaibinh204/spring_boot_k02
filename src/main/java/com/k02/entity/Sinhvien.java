@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sinhvien")
-public class SinhVien {
+public class Sinhvien {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +34,19 @@ public class SinhVien {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Lophoc lophoc;
 	
+	@OneToMany(mappedBy="sinhvien",cascade = CascadeType.ALL)
+	private Set<Bangdiem> dssv=new HashSet<Bangdiem>();
+	
+	
+	
+	public Set<Bangdiem> getDsdiem() {
+		return dssv;
+	}
+
+	public void setDsdiem(Set<Bangdiem> dsdiem) {
+		this.dssv = dsdiem;
+	}
+
 	public Lophoc getLophoc() {
 		return lophoc;
 	}

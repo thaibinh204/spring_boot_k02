@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta lang= "en" charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<h1 align="center">Department List</h1>
+
+	<div>
+		<p></p>
+		<table align="center" border="1">
+			<tr>
+				<th>Customer name</th>
+				<th>Address</th>
+				<th>Country</th>
+				<th>Department Name</th>
+				<th>Sex</th>
+			</tr>
+			<tr th:each="department : ${departments}">
+				<td th:utext="${department.customerName}">...</td>
+				<td th:utext="${department.address}">...</td>
+				<td th:utext="${department.country}">...</td>
+				<td th:utext="${department.departmentName}">...</td>
+				<td th:utext="${department.sex}">...</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

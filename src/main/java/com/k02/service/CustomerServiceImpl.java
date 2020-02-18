@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.k02.dto.CustomerDto;
 import com.k02.entity.Customer;
 import com.k02.repository.CustomerRepository;
 
@@ -30,10 +31,33 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public Customer findCustomerByIdQuery(Long id) {
-		
 		return customerRepository.findCustomerByIdQuery(id);
 	}
-
 	
+	@Override
+	public void deleteCustomerByIdQuery(Long id) {
+		customerRepository.deleteById(id);
+	}
+	
+	@Override
+	public boolean checkExistCustomerByIdQuery(Long id) {
+		return customerRepository.existsById(id);
+	}
+
+	@Override
+	public int updateCustomer(String customerName, String contactName,String address, String city, String postalcode, String country,Long id) {
+		int result=customerRepository.updateCustomer(customerName,contactName,address, city,postalcode,country,id);
+		return result;
+	}
+	
+	@Override
+	public List<Customer> searchCustomer(String txtSearch) {
+		return customerRepository.searchCustomer(txtSearch);
+	}
+	
+	@Override
+	public List<CustomerDto> ListCustomerDepartment() {
+		return customerRepository.ListCustomerDepartment();
+	}
 
 }

@@ -1,11 +1,12 @@
 package com.k02.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="mon_hoc")
+@Table(name="monhoc")
 public class Monhoc {
 	@Id
 	@Column(name="id")
@@ -19,8 +20,20 @@ public class Monhoc {
 	String tenMonHoc;
 	
 	
-	@ManyToMany
-    private Set<Role> roles;
+//	@ManyToMany
+//    private Set<Role> roles;
+	
+	@OneToMany(mappedBy ="monhoc", cascade = CascadeType.ALL)
+	private Set<Bangdiem> dsmh=new HashSet<Bangdiem>();
+	
+	public Set<Bangdiem> getDsmh() {
+		return dsmh;
+	}
+
+
+	public void setDsmh(Set<Bangdiem> dsmh) {
+		this.dsmh = dsmh;
+	}
 
 
 	public Long getId() {
@@ -53,14 +66,14 @@ public class Monhoc {
 	}
 
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+//	public Set<Role> getRoles() {
+//		return roles;
+//	}
+//
+//
+//	public void setRoles(Set<Role> roles) {
+//		this.roles = roles;
+//	}
 	
 	
 	

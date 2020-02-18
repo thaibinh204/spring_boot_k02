@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<h1 align="center">Edit Customer</h1>
+	<p align="center">
+		<a href="customerList">Customer List</a>
+	</p>
+	
+	<div class="container">
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form th:action="@{/edit?id={id}(id=${customer.id})}" method="post">
+					<table align="center" border="1">
+						<tr>
+							<th>Customer name</th>
+							<td><input type="text" th:value="${customer.customerName}"
+								name="customerName" id="customername" />
+							</td>
+						</tr>	
+						<tr>
+							<th>Contact name</th>	
+							<td><input type="text" th:value="${customer.contactName}"
+								name="contactName" id="contactname" />
+							</td>
+						</tr>
+						<tr>
+							<th>Address</th>
+							<td><input type="text" th:value="${customer.address}"
+								name="address" id="address" />
+							</td>
+						</tr>
+						<tr>
+							<th>City</th>
+							<td><input type="text" th:value="${customer.city}"
+								name="city" id="city" />
+							</td>
+						</tr>
+						<tr>
+							<th>Postalcode</th>
+							<td><input type="text" th:value="${customer.postalCode}"
+								name="postalCode" id="postalcode" />
+							</td>
+						</tr>
+						<tr>
+							<th>Country</th>
+							<td>
+							<input type="text" th:value=${customer.country}
+								name="country" id="country" />
+							<input type="hidden" th:value=${customer.id}
+								name="id" id="btsubmit" />
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>
+							<input type="submit" value="Edit" id="submit_id" />
+							</td>
+						</tr>
+					</table>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

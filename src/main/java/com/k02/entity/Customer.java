@@ -32,6 +32,12 @@ public class Customer {
 
 	@Column( name="country")
 	private String country;
+	
+	@Column( name="dept_id")
+	private String departmentId;
+	
+	@Column( name="sex")
+	private String sex;
 
 	public Long getId() {
 		return id;

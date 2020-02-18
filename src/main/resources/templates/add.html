@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Person List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<h1 align="center">Add Customer</h1>
+	<p align="center">
+		<a href="customerList">Customer List</a>
+	</p>
+	
+	<div class="container">
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form th:action="@{/add}" method="post">
+					<table align="center" border="1">
+						<tr>
+							<th>Customer name</th>
+							<td><input type="text" name="customerName" id="customername" />
+							</td>
+						</tr>	
+						<tr>
+							<th>Contact name</th>	
+							<td><input type="text" name="contactName" id="contactname" />
+							</td>
+						</tr>
+						<tr>
+							<th>Address</th>
+							<td><input type="text" name="address" id="address" />
+							</td>
+						</tr>
+						<tr>
+							<th>City</th>
+							<td><input type="text" name="city" id="city" />
+							</td>
+						</tr>
+						<tr>
+							<th>Postalcode</th>
+							<td><input type="text"	name="postalCode" id="postalcode" />
+							</td>
+						</tr>
+						<tr>
+							<th>Country</th>
+							<td>
+							<input type="text" 	name="country" id="country" />
+							
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>
+							<input type="submit" value="add" id="submit_id" />
+							</td>
+						</tr>
+					</table>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -7,20 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
-
+import com.k02.entity.Bangdiem;
 import com.k02.entity.Lophoc;
 import com.k02.entity.User;
+import com.k02.service.BangdiemService;
 import com.k02.service.LophocService;
 
 
 import com.k02.entity.Monhoc;
-import com.k02.entity.SinhVien;
+import com.k02.entity.Sinhvien;
 import com.k02.entity.User;
 import com.k02.service.MonhocService;
-
+import com.k02.service.SinhvienService;
 import com.k02.service.UserService;
 
 @Controller
@@ -31,6 +29,8 @@ public class Example {
 	private LophocService lophocSrv;
 	@Autowired
 	private MonhocService monhocSrv;
+	@Autowired
+	private SinhvienService sinhvienSrv;
 	
 	
 	@RequestMapping("/hello")
@@ -61,9 +61,9 @@ public class Example {
 		if(lopHoc != null) {
 			// mac dinh là trong lop hoc co chua danh sach sv cua lop do
 			// nen get danh sach sv
-			Set<SinhVien> sinhViens = lopHoc.getDsSV();
+			Set<Sinhvien> sinhViens = lopHoc.getDsSV();
 			// lay tat ca ten sv trong danh sach roi hien thi len man hinh
-			for (SinhVien sinhVien : sinhViens) {
+			for (Sinhvien sinhVien : sinhViens) {
 				result += sinhVien.getTenSinhVien()+"</br>";
 			}
 		}
@@ -82,5 +82,34 @@ public class Example {
 		
 	}
 	
+	@RequestMapping("/bangdiem")
+	@ResponseBody
+	public String bangDiem() {
+		Monhoc ds =monhocSrv.findByMonhoc(2l);
+		String result ="";
+		if(ds != null) {
+			Set<Bangdiem> monHocs = ds.getDsmh();
+			for (Bangdiem monH : monHocs) {
+				result += ds.getTenmonhoc()+" - "+monH.getDiem()+"</br>";
+			}
+		}else {
+			result="Danh sach trong";
+		}
+		return  result;
+	}
+	
+	@RequestMapping("/sinhvien")
+	@ResponseBody
+	public String sinhVien() {
+		Sinhvien ds=sinhvienSrv.findBySinhvien(2l);
+		String result="";
+		if(ds!=null){
+			Set<Bangdiem> dssv=ds.getDsdiem();
+			for(Bangdiem item : dssv) {
+				result+=ds.getTenSinhVien()+ " " +item.getDiem()+"</br>";
+			}
+		}
+		return result;
+	}
 
 }
